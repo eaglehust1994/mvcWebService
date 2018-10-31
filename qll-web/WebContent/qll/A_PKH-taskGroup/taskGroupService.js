@@ -8,8 +8,8 @@ angular.module('MetronicApp').factory('taskGroupService', ['$http', '$q', 'RestE
 	        saveTaskGroup:saveTaskGroup,
 	        deleteObj:deleteObj,
 	        deleteListObj: deleteListObj,
-	        updateTaskGroup:updateTaskGroup
-	       
+	        updateTaskGroup:updateTaskGroup,
+	        getDeptId:getDeptId
 	     
 	    };
 	   
@@ -22,6 +22,9 @@ angular.module('MetronicApp').factory('taskGroupService', ['$http', '$q', 'RestE
             return Restangular.all(serviceUrl+"/doSearch").post(obj); 	 
         }
 	    
+	    function getDeptId(obj) {
+            return Restangular.all(serviceUrl+"/getDeptId").post(obj); 	 
+        }
 	    function saveTaskGroup(obj) {
             return Restangular.all(serviceUrl+"/saveTaskGroup").post(obj); 	 
         }

@@ -39,6 +39,10 @@ public class TaskGroupBusinessImpl extends BaseFWBusinessImpl<TaskGroupDAO,TaskG
 		return taskGroupDAO.doSearch(obj);
 	}	
 	@Override
+	public   TaskGroupDTO getDeptId(TaskGroupDTO obj) {
+		return taskGroupDAO.getDeptId(obj);
+	}
+	@Override
 	public long saveTaskGroup(TaskGroupDTO obj) {
 		try {
 			long ids = taskGroupDAO.saveObject(obj.toModel());

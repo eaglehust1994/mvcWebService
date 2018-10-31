@@ -19,11 +19,16 @@ public interface TaskGroupRsService {
 
 	
 	@POST
+	@Path("/getDeptId")
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public Response getDeptId(TaskGroupDTO obj);
+	
+	@POST
 	@Path("/doSearch")
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response doSearch(TaskGroupDTO obj);
-	
 	@POST
 	@Path("/saveTaskGroup")
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })

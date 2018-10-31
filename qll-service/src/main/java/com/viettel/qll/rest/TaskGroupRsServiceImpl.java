@@ -37,6 +37,16 @@ public class TaskGroupRsServiceImpl implements TaskGroupRsService {
 		}
 	}
 	@Override
+	public Response getDeptId(TaskGroupDTO obj) {
+		TaskGroupDTO ls = taskGroupBusinessImpl.getDeptId(obj);
+		if (ls == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		} else {
+		
+			return Response.ok(ls).build();
+		}
+	}
+	@Override
 	public Response saveTaskGroup(TaskGroupDTO obj) {
 		// TODO Auto-generated method stub
 		long ls = taskGroupBusinessImpl.saveTaskGroup(obj);

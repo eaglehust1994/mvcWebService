@@ -352,6 +352,7 @@
 			vm.addTaskGroup={};
 			
 		  	vm.addTaskGroup=dataItem;
+			
 		  	vm.addTaskGroup.periodic = vm.addTaskGroup.periodic.toString();
 		  
 			var teamplateUrl="qll/A_PKH-taskGroup/updatedTaskGroup.html";
@@ -386,28 +387,38 @@
 		                	toastr.error(gettextCatalog.getString("Xảy ra lỗi khi thêm mới"));
 		            });
 			 }else{
-				 taskGroupService.updateTaskGroup(vm.addTaskGroup).then(function(result){
+				 
+				 taskGroupService.getDeptId(vm.addTaskGroup).then(function(result){
 		    			if(result.error){
 		    				toastr.error(result.error);
 		    				return;
 		    			}
-		    			
-		    			toastr.success("Cập nhật thành công!");
-		    			  var sizePage = $("#taskGroupGrid").data("kendoGrid").dataSource.total();
-		    			  var pageSize = $("#taskGroupGrid").data("kendoGrid").dataSource.pageSize();
-		    					if(sizePage % pageSize === 1){
-		    								var currentPage = $("#taskGroupGrid").data("kendoGrid").dataSource.page();
-		    								if (currentPage > 1) {
-		    									$("#taskGroupGrid").data("kendoGrid").dataSource.page(currentPage - 1);
-		    								}
-		    							}
-		    			$("#taskGroupGrid").data('kendoGrid').dataSource.read();
-		    			$("#taskGroupGrid").data('kendoGrid').refresh();
-		    			$("div.k-window-actions > a.k-window-action > span.k-i-close").click();
-		    		}, function(errResponse){
-		                	toastr.error(gettextCatalog.getString("Xảy ra lỗi khi cập nhật"));
-		            }
-		    		);
+		    			vm.addTaskGroup.departmentId=result.departmentId;
+		    			debugger;
+		    			 taskGroupService.updateTaskGroup(vm.addTaskGroup).then(function(result){
+				    			if(result.error){
+				    				toastr.error(result.error);
+				    				return;
+				    			}
+				    			
+				    			toastr.success("Cập nhật thành công!");
+				    			  var sizePage = $("#taskGroupGrid").data("kendoGrid").dataSource.total();
+				    			  var pageSize = $("#taskGroupGrid").data("kendoGrid").dataSource.pageSize();
+				    					if(sizePage % pageSize === 1){
+				    								var currentPage = $("#taskGroupGrid").data("kendoGrid").dataSource.page();
+				    								if (currentPage > 1) {
+				    									$("#taskGroupGrid").data("kendoGrid").dataSource.page(currentPage - 1);
+				    								}
+				    							}
+				    			$("#taskGroupGrid").data('kendoGrid').dataSource.read();
+				    			$("#taskGroupGrid").data('kendoGrid').refresh();
+				    			$("div.k-window-actions > a.k-window-action > span.k-i-close").click();
+				    		}, function(errResponse){
+				                	toastr.error(gettextCatalog.getString("Xảy ra lỗi khi cập nhật"));
+				            }
+				    		);
+		    		});
+				
 			 }
 				 
 			

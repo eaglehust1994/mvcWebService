@@ -18,6 +18,8 @@ public interface TaskGroupBusiness {
 	long updateTaskGroup(TaskGroupDTO obj) throws Exception;
 
 	long deleteListObj(TaskGroupDTO obj);
+
+	TaskGroupDTO getDeptId(TaskGroupDTO obj);
 	
 
 }

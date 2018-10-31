@@ -3,6 +3,8 @@ package com.viettel.qll.rest;
 import java.util.Collections;
 import java.util.List;
 import javax.ws.rs.core.Response;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,6 +31,12 @@ public class TaskRsServiceImpl implements TaskRsService {
 	
 	@Override
 	public Response doSearch(TaskDTO obj) {
+		if(StringUtils.isNotEmpty(obj.getEmployeeCode())){
+			SysUserDTO user = new SysUserDTO();	
+			user = sysUserBusinessImpl.infoSysUserByEmployee(obj.getEmployeeCode());
+			obj.setDepartmentId(user.getDepartmentId());
+		}
+		
 		List<TaskDTO> ls = taskBusinessImpl.doSearch(obj);
 		if (ls == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();

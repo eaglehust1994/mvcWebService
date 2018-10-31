@@ -8,7 +8,7 @@
 	function RestEndpoint() {
 		var endpoints = {
 				//local
-			BASE_SERVICE_URL : 'http://localhost:8084/qll-service/',
+//			BASE_SERVICE_URL : 'http://localhost:8084/qll-service/',
 				/**
 				 * qll
 				 */
@@ -17,7 +17,7 @@
 				 * qlts	
 				 */
 				//build
-//			BASE_SERVICE_URL : 'http://10.61.19.199:8085/qll-service/', 
+			BASE_SERVICE_URL : 'http://10.61.19.199:8085/qll-service/', 
 //			BASE_SERVICE_URL :'http://10.58.71.134:8787/qll-service/',
 //			BASE_SERVICE_URL : 'http://10.58.71.134:8352/qll-service/',
 //			BASE_SERVICE_URL : 'http://10.58.71.134:8282/ktts-service/',

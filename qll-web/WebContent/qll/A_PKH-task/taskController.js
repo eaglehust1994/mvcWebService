@@ -19,7 +19,7 @@
 				errMessage1:""
 			}
 		vm.roleAdmin=$rootScope.RoleMenu.checkRole.checkRoLeFullQuyenAll;
-		
+		vm.roleememe=$rootScope.RoleMenu.checkRole.checkPKH;
 		
 		setTimeout(function() {
 			$("#changeId").focus();
@@ -70,7 +70,7 @@
 									+ 'ng-click="vm.listTaskGroup()" ng-show="RoleMenu.checkRole.checkPKH" aria-hidden="true" uib-tooltip="Quản lý danh sách nhóm công việc" translate >Quản lý nhóm việc</button>'
 									 +'</div>'
 									+ '<div class="btn-group pull-right margin_top_button margin_right10">'
-									+ '<button class="btn btn-qlk padding-search-right deletehd"  aria-hidden="true" ng-show="RoleMenu.checkRole.checkRoLeFullQuyenAll" style="margin: -5px 5px;" ng-click="vm.removeAny()" uib-tooltip="Xóa theo điều kiện" translate="">Xóa</button>'
+									+ '<button class="btn btn-qlk padding-search-right deletehd"  aria-hidden="true" ng-show="RoleMenu.checkRole.checkPKH" style="margin: -5px 5px;" ng-click="vm.removeAny()" uib-tooltip="Xóa theo điều kiện" translate="">Xóa</button>'
 									+ '<i data-toggle="dropdown" uib-tooltip="Cài đặt"  aria-expanded="false"><i class="fa fa-cog" aria-hidden="true"></i></i>'
 									+ '<div class="dropdown-menu hold-on-click dropdown-checkboxes" role="menu">'
 									+ '<label ng-repeat="column in vm.taskGrid.columns.slice(1,vm.taskGrid.columns.length)">'
@@ -117,12 +117,20 @@
 								 type : "POST"
 								},
 								parameterMap : function(options, type) {
-
-									vm.taskSearch.page = options.page;
-									vm.taskSearch.pageSize = options.pageSize;
-									vm.oldSearch = angular.copy(vm.taskSearch);
-									return JSON.stringify(vm.taskSearch);
-
+									
+									if(vm.roleememe || vm.roleAdmin){
+										vm.taskSearch.page = options.page;
+										vm.taskSearch.pageSize = options.pageSize;
+										vm.oldSearch = angular.copy(vm.taskSearch);
+										return JSON.stringify(vm.taskSearch);
+									}else{
+										vm.taskSearch.page = options.page;
+										vm.taskSearch.pageSize = options.pageSize;
+										vm.taskSearch.employeeCode = $rootScope.casUser.employeeCode;
+										vm.oldSearch = angular.copy(vm.taskSearch);
+										return JSON.stringify(vm.taskSearch);
+										
+									}
 								}
 							},
 							pageSize :10
@@ -262,7 +270,7 @@
 				 
 				 taskService.checkInfoUser(dataItem).then(function(result){
 					
-					 if(result==true || vm.roleAdmin==true){
+					 if(result==true || vm.roleememe==true){
 						 confirm("Bạn có muốn cập nhật!", function() {
 						 taskService.updateTaskStatus(dataItem).then(function(item){
 							 if(item.error){

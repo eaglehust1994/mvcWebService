@@ -63,7 +63,7 @@
 		// 11 - RoleID 112
 		}
 
-		config.BASE_SERVICE_URL = 'http://localhost:8084/qll-service/';
+//		config.BASE_SERVICE_URL = 'http://localhost:8084/qll-service/';
 		/**
 		 * qll
 		 */
@@ -72,7 +72,7 @@
 		 * qlts
 		 */
 		
-//		config.BASE_SERVICE_URL = 'http://10.61.19.199:8085/qll-service/';
+		config.BASE_SERVICE_URL = 'http://10.61.19.199:8085/qll-service/';
 //		config.BASE_SERVICE_URL = 'http://10.58.71.134:8787/qll-service/';
 //		config.BASE_SERVICE_URL = 'http://10.58.71.134:8352/qll-service/';
 //		 config.BASE_SERVICE_URL = 'http://10.58.71.134:8282/ktts-service/';

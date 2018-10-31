@@ -194,5 +194,18 @@ public class TaskGroupDAO extends BaseFWDAOImpl<TaskGroupBO, Long> {
     	}
     	return query.list();
     }
+    @SuppressWarnings("unchecked")
+   	public TaskGroupDTO getDeptId(TaskGroupDTO obj){
+       	StringBuilder sql = new StringBuilder(""); 
+       	sql.append("Select DEPARTMENT_ID departmentId from TASK_GROUP where TASK_GROUP_ID = :taskGroupId ");
+       	
+       	SQLQuery query = getSession().createSQLQuery(sql.toString());
+       	
+       	query.addScalar("departmentId", new LongType());
+       	query.setResultTransformer(Transformers.aliasToBean(TaskGroupDTO.class));
+       	query.setParameter("taskGroupId", obj.getTaskGroupId());
+       
+       	return (TaskGroupDTO) query.uniqueResult();
+       }
 
 }

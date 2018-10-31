@@ -6,7 +6,7 @@ Metronic AngularJS App Main Script
 /**
  * local
  */
-var API_URL="/qll-service/";
+//var API_URL="/qll-service/";
 /**
  * qll
  */
@@ -15,7 +15,7 @@ var API_URL="/qll-service/";
  * qlts-- build
  */
 
-//var API_URL="http://10.61.19.199:8085/qll-service/";
+var API_URL="http://10.61.19.199:8085/qll-service/";
 $.ajaxPrefilter(function(options, originalOptions, jqXHR){
     if (options.type.toLowerCase() === "post"||options.type.toLowerCase()==="put"||
     		options.type.toLowerCase()==="delete"||options.type.toLowerCase()==="options") {
